@@ -1,0 +1,1 @@
+MainPackage=E:\Buid Code Store\street travel_13_4_2018\street travel_13_4_2018\StreetTravel\bin\x86\Release\Upload\Street Travel_1.2.1.0_x86.appx

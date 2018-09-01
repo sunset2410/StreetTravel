@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="StreetTravel.StartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StreetTravel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    DataContext="{Binding StartPageInstance, Source={StaticResource Locator}}"
+    xmlns:ads="using:Microsoft.Advertising.WinRT.UI"
+    SizeChanged="Page_SizeChanged"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <WebView x:Name="MyWebView" Grid.Row="1" HorizontalAlignment="Stretch" NavigationStarting="MyWebView_NavigationStarting" ScriptNotify="MyWebView_ScriptNotify"
+                 VerticalAlignment="Stretch" LoadCompleted="MyWebView_LoadCompleted" Loading="MyWebView_Loading">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="ContentLoading">
+                    <Core:InvokeCommandAction Command="{Binding onDisplay_ContentLoading}" CommandParameter="{Binding ElementName = MyWebView}" />
+                </Core:EventTriggerBehavior>
+                <Core:EventTriggerBehavior EventName="DOMContentLoaded">
+                    <Core:InvokeCommandAction Command="{Binding onDisplay_ContentLoaded}" CommandParameter="{Binding ElementName = MyWebView}" />
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </WebView>
+        <ads:AdControl Width="728" Height="90" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="{Binding Path = IsShowAd}"
+                               ApplicationId="9mt3b01wmj1h" AdUnitId="11684341" Canvas.ZIndex="1"/>
+        <ProgressRing Name="ringProgress" Width="100" Height="100" HorizontalAlignment="Center"
+                              VerticalAlignment="Center" IsActive="{Binding Path= IsActiveProgressRing}"/>
+    </Grid>
+</Page>

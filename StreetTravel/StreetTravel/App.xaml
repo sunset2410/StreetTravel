@@ -1,0 +1,11 @@
+﻿<Application
+    x:Class="StreetTravel.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StreetTravel"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <vm:ViewModelLocator
+            xmlns:vm="using:StreetTravel.ViewModels" x:Key="Locator"/>
+    </Application.Resources>
+</Application>
